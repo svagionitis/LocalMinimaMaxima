@@ -15,7 +15,28 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
     {
         if (i != 0)
         {
-            // FIX: The local maxima it's been added multiple times
+            if (data[i] > data[i - 1])
+            {
+                candidateMaxima.index = i;
+                candidateMaxima.value = data[i];
+                std::cout << "candidateMaxima: " << candidateMaxima << std::endl;
+            }
+            else if (data[i] < data[i - 1])
+            {
+                candidateMinima.index = i;
+                candidateMinima.value = data[i];
+                std::cout << "candidateMinima: " << candidateMinima << std::endl;
+            }
+            else
+            {
+                candidateMaxima.index = i;
+                candidateMaxima.value = data[i];
+                std::cout << "candidateMaxima: " << candidateMaxima << std::endl;
+                candidateMinima.index = i;
+                candidateMinima.value = data[i];
+                std::cout << "candidateMinima: " << candidateMinima << std::endl;
+            }
+
             if (candidateMaxima.value > data[i]
                 && candidateMaxima.index == i - 1)
             {
@@ -38,19 +59,6 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                     std::cout << lMn;
                 }
                 std::cout << std::endl;
-            }
-
-            if (data[i] > data[i - 1])
-            {
-                candidateMaxima.index = i;
-                candidateMaxima.value = data[i];
-                std::cout << "candidateMaxima: " << candidateMaxima << std::endl;
-            }
-            else if (data[i] < data[i - 1])
-            {
-                candidateMinima.index = i;
-                candidateMinima.value = data[i];
-                std::cout << "candidateMinima: " << candidateMinima << std::endl;
             }
         }
     }
