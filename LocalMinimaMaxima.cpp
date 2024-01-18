@@ -13,33 +13,33 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
 
     for (size_t i = 0; i < data.size(); ++i)
     {
-        // FIX: The local maxima it's been added multiple times
-        if (candidateMaxima.value > data[i]
-            && candidateMaxima.index == i - 1)
-        {
-            localMaxima.push_back(candidateMaxima);
-            std::cout << "lMx: ";
-            for (auto lMx: localMaxima)
-            {
-                std::cout << lMx;
-            }
-            std::cout << std::endl;
-        }
-
-        if (candidateMinima.value < data[i]
-            && candidateMinima.index == i - 1)
-        {
-            localMinima.push_back(candidateMinima);
-            std::cout << "lMn: ";
-            for (auto lMn: localMinima)
-            {
-                std::cout << lMn;
-            }
-            std::cout << std::endl;
-        }
-
         if (i != 0)
         {
+            // FIX: The local maxima it's been added multiple times
+            if (candidateMaxima.value > data[i]
+                && candidateMaxima.index == i - 1)
+            {
+                localMaxima.push_back(candidateMaxima);
+                std::cout << "lMx: ";
+                for (auto lMx: localMaxima)
+                {
+                    std::cout << lMx;
+                }
+                std::cout << std::endl;
+            }
+
+            if (candidateMinima.value < data[i]
+                && candidateMinima.index == i - 1)
+            {
+                localMinima.push_back(candidateMinima);
+                std::cout << "lMn: ";
+                for (auto lMn: localMinima)
+                {
+                    std::cout << lMn;
+                }
+                std::cout << std::endl;
+            }
+
             if (data[i] > data[i - 1])
             {
                 candidateMaxima.index = i;
