@@ -44,7 +44,7 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                 std::cout << "lMx: ";
                 for (auto lMx: localMaxima)
                 {
-                    std::cout << lMx;
+                    std::cout << lMx << ", ";
                 }
                 std::cout << std::endl;
             }
@@ -56,7 +56,7 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                 std::cout << "lMn: ";
                 for (auto lMn: localMinima)
                 {
-                    std::cout << lMn;
+                    std::cout << lMn << ", ";
                 }
                 std::cout << std::endl;
             }
