@@ -6,6 +6,7 @@ namespace Extrema
 {
 std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
 {
+    // Initializiing candidate maxima and minima with the first element.
     Extrema_t candidateMaxima = {0, data[0]};
     Extrema_t candidateMinima = {0, data[0]};
     std::vector<Extrema_t> localMaxima = {};
@@ -15,18 +16,21 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
     {
         if (i != 0)
         {
+            // If the current value is greater than the previous, then this is a candidate maxima
             if (data[i] > data[i - 1])
             {
                 candidateMaxima.index = i;
                 candidateMaxima.value = data[i];
                 std::cout << "candidateMaxima: " << candidateMaxima << std::endl;
             }
+            // If the current value is less than the previous, then this is a candidate minima
             else if (data[i] < data[i - 1])
             {
                 candidateMinima.index = i;
                 candidateMinima.value = data[i];
                 std::cout << "candidateMinima: " << candidateMinima << std::endl;
             }
+            // If the current value is equal to the previous, it is both a maxima and a minima
             else
             {
                 candidateMaxima.index = i;
@@ -37,6 +41,8 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                 std::cout << "candidateMinima: " << candidateMinima << std::endl;
             }
 
+            // If the candidate maxima is greater than the current value and its index is the previous,
+            // add it to local maxima
             if (candidateMaxima.value > data[i]
                 && candidateMaxima.index == i - 1)
             {
@@ -49,6 +55,8 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                 std::cout << std::endl;
             }
 
+            // If the candidate minima is less than the current value and its index is the previous,
+            // add it to local minima
             if (candidateMinima.value < data[i]
                 && candidateMinima.index == i - 1)
             {
