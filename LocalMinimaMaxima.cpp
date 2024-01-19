@@ -42,9 +42,10 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
             }
 
             // If the candidate maxima is greater than the current value and its index is the previous,
-            // add it to local maxima
-            if (candidateMaxima.value > data[i]
-                && candidateMaxima.index == i - 1)
+            // add it to local maxima or
+            // if the candidate maxima is the last element, add it
+            if ((candidateMaxima.value > data[i] && candidateMaxima.index == i - 1)
+                || (candidateMaxima.value == data[i] && candidateMaxima.index == data.size() - 1))
             {
                 localMaxima.push_back(candidateMaxima);
                 std::cout << "lMx: ";
@@ -56,9 +57,10 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
             }
 
             // If the candidate minima is less than the current value and its index is the previous,
-            // add it to local minima
-            if (candidateMinima.value < data[i]
-                && candidateMinima.index == i - 1)
+            // add it to local minima or
+            // if the candidate minima is the last element, add it
+            if ((candidateMinima.value < data[i] && candidateMinima.index == i - 1)
+                || (candidateMinima.value == data[i] && candidateMinima.index == data.size() - 1))
             {
                 localMinima.push_back(candidateMinima);
                 std::cout << "lMn: ";
