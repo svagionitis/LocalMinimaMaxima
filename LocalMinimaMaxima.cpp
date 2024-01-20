@@ -1,5 +1,7 @@
 #include "LocalMinimaMaxima.h"
+#ifdef DEBUG
 #include "UtilsPrint.h"
+#endif
 
 #include <iostream>
 #include <ostream>
@@ -23,21 +25,27 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
             {
                 candidateMaxima.index = i;
                 candidateMaxima.value = data[i];
+#ifdef DEBUG
                 std::cout << "candidateMaxima: " << candidateMaxima << std::endl;
+#endif
             }
             // If the current value is less than the previous, then this is a candidate minima
             else if (data[i] < data[i - 1])
             {
                 candidateMinima.index = i;
                 candidateMinima.value = data[i];
+#ifdef DEBUG
                 std::cout << "candidateMinima: " << candidateMinima << std::endl;
+#endif
             }
             // If the current value is equal to the previous, it is both a maxima and a minima
             else
             {
                 candidateMaxima.index = i;
                 candidateMaxima.value = data[i];
+#ifdef DEBUG
                 std::cout << "candidateMaxima: " << candidateMaxima << std::endl;
+#endif
                 candidateMinima.index = i;
                 candidateMinima.value = data[i];
                 std::cout << "candidateMinima: " << candidateMinima << std::endl;
@@ -50,8 +58,9 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                 || (candidateMaxima.value == data[i] && candidateMaxima.index == data.size() - 1))
             {
                 localMaxima.push_back(candidateMaxima);
-
+#ifdef DEBUG
                 Utils::UtilsPrint::PrintVector("lMx", localMaxima);
+#endif
             }
 
             // If the candidate minima is less than the current value and its index is the previous,
@@ -61,8 +70,9 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                 || (candidateMinima.value == data[i] && candidateMinima.index == data.size() - 1))
             {
                 localMinima.push_back(candidateMinima);
-
+#ifdef DEBUG
                 Utils::UtilsPrint::PrintVector("lMn", localMinima);
+#endif
             }
         }
     }
