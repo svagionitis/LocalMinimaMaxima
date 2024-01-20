@@ -13,6 +13,8 @@ add_executable(LocalMinimaMaxima
     LocalMinimaMaxima.h
     LocalMinimaMaxima.cpp
     main.cpp
+    UtilsPrint.h
+    UtilsPrint.cpp
 )
 target_link_libraries(LocalMinimaMaxima)
 

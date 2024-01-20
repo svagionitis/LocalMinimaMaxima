@@ -1,4 +1,6 @@
 #include "LocalMinimaMaxima.h"
+#include "UtilsPrint.h"
+
 #include <iostream>
 #include <ostream>
 
@@ -48,12 +50,8 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                 || (candidateMaxima.value == data[i] && candidateMaxima.index == data.size() - 1))
             {
                 localMaxima.push_back(candidateMaxima);
-                std::cout << "lMx: ";
-                for (auto lMx: localMaxima)
-                {
-                    std::cout << lMx << ", ";
-                }
-                std::cout << std::endl;
+
+                Utils::UtilsPrint::PrintVector("lMx", localMaxima);
             }
 
             // If the candidate minima is less than the current value and its index is the previous,
@@ -63,12 +61,8 @@ std::vector<Extrema_t> LocalMinimaMaxima::algo1(const std::vector<float>& data)
                 || (candidateMinima.value == data[i] && candidateMinima.index == data.size() - 1))
             {
                 localMinima.push_back(candidateMinima);
-                std::cout << "lMn: ";
-                for (auto lMn: localMinima)
-                {
-                    std::cout << lMn << ", ";
-                }
-                std::cout << std::endl;
+
+                Utils::UtilsPrint::PrintVector("lMn", localMinima);
             }
         }
     }
